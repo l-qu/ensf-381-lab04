@@ -43,11 +43,11 @@ function render(users){
 
 }
 var userGrid = document.getElementsByClassName("container")
-var toggleBtn = document.getElementById('viewToggleBtn');
+var viewToggleBtn = document.getElementById('viewToggleBtn');
 var deleteIdInput = document.getElementById('deleteIdInput');
 var deleteBtn = document.getElementById('deleteBtn');
-var sortByGroup = document.getElementById('sortByGroupBrn');
-var sortbyId = document.getElementById('sortByIdBtn');
+var sortByGroupBtn = document.getElementById('sortByGroupBrn');
+var sortbyIdBtn = document.getElementById('sortByIdBtn');
 
 
 var users = retrieveData().then(console.log);
