@@ -42,11 +42,12 @@ function render(users){
         
 
 }
-var toggelBtnID = document.getElementById('viewToggleBtn');
-var deleteIdInputID = document.getElementById('deleteIdInput');
-var deletebtnID = document.getElementById('deleteBtn');
-var sortByGroupID = document.getElementById('sortByGroupBrn');
-var sortbyIdID = document.getElementById('sortByIdBtn');
+var userGrid = document.getElementsByClassName("container")
+var toggleBtn = document.getElementById('viewToggleBtn');
+var deleteIdInput = document.getElementById('deleteIdInput');
+var deleteBtn = document.getElementById('deleteBtn');
+var sortByGroup = document.getElementById('sortByGroupBrn');
+var sortbyId = document.getElementById('sortByIdBtn');
 
 
 var users = retrieveData().then(console.log);
