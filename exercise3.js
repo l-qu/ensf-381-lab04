@@ -37,15 +37,19 @@ function render(users){
          }
         }    
 }
-var userGrid = document.getElementsByClassName("container");
+
 var userGridID = document.getElementById("userGrid")
 var viewToggleBtn = document.getElementById('viewToggleBtn');
 var deleteIdInput = document.getElementById('deleteIdInput');
 var deleteBtn = document.getElementById('deleteBtn');
-var sortByGroupBtn = document.getElementById('sortByGroupBrn');
+var sortByGroupBtn = document.getElementById('sortByGroupBtn');
 var sortbyIdBtn = document.getElementById('sortByIdBtn');
 
-var users = retrieveData("https://69a1da772e82ee536fa26007.mockapi.io/users_api").then(console.log);
+var users = []
+retrieveData("https://69a1da772e82ee536fa26007.mockapi.io/users_api").then(data => {
+    users = data;
+    console.log(users)
+});
 
 viewToggleBtn.addEventListener('click', (event) => {
     if (userGridID.classList.contains("grid-view")){
@@ -53,7 +57,7 @@ viewToggleBtn.addEventListener('click', (event) => {
     } else if(userGridID.classList.contains("list-view")){
         userGridID.classList.replace("list-view", "grid-view");
     }
-})
+});
 
 deleteBtn.addEventListener('click', (event) =>{
     var idDelete = deleteIdInput.value;
@@ -62,16 +66,26 @@ deleteBtn.addEventListener('click', (event) =>{
             method: 'DELETE',
         }).then(response => {
             if (!response.ok){
-                console.error("No user by that id was found.")
+                console.error("No user by that id was found.");
             }
             users = retrieveData("https://69a1da772e82ee536fa26007.mockapi.io/users_api").then(console.log);
         })
     }catch(error){
         console.log("No user by that id was found.");
     }
-
     
-})
+});
 
+sortByGroupBtn.addEventListener('click', (event) => {
+    users.sort((a, b) => {
+        return a.user_group - b.user_group;
+    });
+    render(users);
+});
 
-
+sortByIdBtn.addEventListener('click', (event) => {
+    users.sort((a, b) => {
+        return a.id - b.id;
+    });
+    render(users);
+});
