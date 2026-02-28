@@ -68,12 +68,15 @@ deleteBtn.addEventListener('click', (event) =>{
             if (!response.ok){
                 console.error("No user by that id was found.");
             }
-            users = retrieveData("https://69a1da772e82ee536fa26007.mockapi.io/users_api").then(console.log);
+        users = []
+        retrieveData("https://69a1da772e82ee536fa26007.mockapi.io/users_api").then(data => {
+            users = data;
+            console.log(users)
+            });
         })
     }catch(error){
         console.log("No user by that id was found.");
-    }
-    
+    } 
 });
 
 sortByGroupBtn.addEventListener('click', (event) => {
